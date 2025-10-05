@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية | مصطفى محمود محمد المهدي عويضة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to handle font switching and RTL/LTR layout */
+        :root {
+            --primary-color: #2c3e50; /* A dark slate blue */
+            --secondary-color: #3498db; /* A bright blue */
+            --background-color: #ecf0f1; /* A light gray */
+            --text-color: #34495e; /* A dark gray-blue */
+            --card-bg: #ffffff;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        html[lang="ar"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        html[lang="en"] body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        .card {
+            background-color: var(--card-bg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            border: 3px solid var(--background-color);
+            top: 0;
+        }
+        html[lang="ar"] .timeline-item::before {
+            right: -0.625rem; /* Adjust for RTL */
+        }
+        html[lang="en"] .timeline-item::before {
+            left: -0.625rem; /* Adjust for LTR */
+        }
+        html[lang="ar"] .timeline {
+            border-right: 3px solid var(--secondary-color);
+        }
+        html[lang="en"] .timeline {
+            border-left: 3px solid var(--secondary-color);
+        }
+        .btn-cv {
+            background-color: var(--secondary-color);
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-cv:hover {
+            background-color: var(--primary-color);
+        }
+        /* Alignment override */
+        .main-content section > div,
+        .main-content section > ul,
+        aside section > ul,
+        aside section > div {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Container -->
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Header -->
+        <header class="card rounded-2xl shadow-lg p-6 md:p-8 mb-8 text-center md:flex md:items-center md:justify-between">
+            <div class="md:text-start">
+                <h1 class="text-4xl md:text-5xl font-bold" style="color: var(--primary-color);" data-key="name"></h1>
+                <p class="text-xl md:text-2xl mt-2" style="color: var(--secondary-color);" data-key="jobTitle"></p>
+            </div>
+            <div class="mt-6 md:mt-0 flex flex-col items-center gap-4">
+                 <!-- Language Switcher -->
+                <div class="flex space-x-2">
+                    <button id="lang-ar" class="px-4 py-2 text-sm font-semibold bg-gray-200 rounded-lg">العربية</button>
+                    <button id="lang-en" class="px-4 py-2 text-sm font-semibold bg-gray-200 rounded-lg">English</button>
+                </div>
+                <!-- CV Download Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                    <a href="Mostafa_Mahdy_CV_AR.pdf" download class="btn-cv font-bold py-2 px-4 rounded-lg inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-download"></i>
+                        <span data-key="downloadCV_AR"></span>
+                    </a>
+                    <a href="Mostafa_Mahdy_CV_EN.pdf" download class="btn-cv font-bold py-2 px-4 rounded-lg inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-download"></i>
+                        <span data-key="downloadCV_EN"></span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column / Sidebar -->
+            <aside class="lg:col-span-1 space-y-8">
+                <!-- Personal Info -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 section-title pb-2" data-key="personalInfoTitle"></h2>
+                    <ul class="space-y-3">
+                        <li><i class="fas fa-user-tie w-6" style="color: var(--secondary-color);"></i> <strong data-key="fullNameLabel"></strong> <span data-key="fullName"></span></li>
+                        <li><i class="fas fa-briefcase w-6" style="color: var(--secondary-color);"></i> <strong data-key="jobTitleLabel"></strong> <span data-key="jobTitle"></span></li>
+                        <li><i class="fas fa-calendar-alt w-6" style="color: var(--secondary-color);"></i> <strong data-key="dobLabel"></strong> <span data-key="dob"></span></li>
+                        <li><i class="fas fa-map-marker-alt w-6" style="color: var(--secondary-color);"></i> <strong data-key="pobLabel"></strong> <span data-key="pob"></span></li>
+                        <li><i class="fas fa-flag w-6" style="color: var(--secondary-color);"></i> <strong data-key="nationalityLabel"></strong> <span data-key="nationality"></span></li>
+                        <li><i class="fas fa-ring w-6" style="color: var(--secondary-color);"></i> <strong data-key="maritalStatusLabel"></strong> <span data-key="maritalStatus"></span></li>
+                        <li><i class="fas fa-shield-alt w-6" style="color: var(--secondary-color);"></i> <strong data-key="militaryServiceLabel"></strong> <span data-key="militaryService"></span></li>
+                    </ul>
+                </section>
+
+                <!-- Contact Info -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 section-title pb-2" data-key="contactInfoTitle"></h2>
+                    <div class="space-y-3 break-words">
+                        <div>
+                            <h3 class="font-bold text-lg" style="color: var(--primary-color);"><i class="fas fa-phone w-6"></i> <span data-key="phoneLabel"></span></h3>
+                            <p class="ps-6">+201115600907</p>
+                            <p class="ps-6">+201002433491</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg" style="color: var(--primary-color);"><i class="fas fa-home w-6"></i> <span data-key="homePhoneLabel"></span></h3>
+                            <p class="ps-6">+20553926164</p>
+                            <p class="ps-6">+20922938692</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg" style="color: var(--primary-color);"><i class="fas fa-envelope w-6"></i> <span data-key="emailLabel"></span></h3>
+                            <p class="ps-6">M.elmahdy21@agri.zu.edu.eg</p>
+                            <p class="ps-6">Mostafa.mahdy.egy@gmail.com</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg" style="color: var(--primary-color);"><i class="fas fa-map-pin w-6"></i> <span data-key="addressLabel"></span></h3>
+                            <p class="ps-6" data-key="address1"></p>
+                            <p class="ps-6" data-key="address2"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Social Media -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 section-title pb-2" data-key="socialMediaTitle"></h2>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <a href="https://www.facebook.com/Mostafa.Mahdy.oweda" target="_blank" class="text-3xl hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/mostafa00mahdy" target="_blank" class="text-3xl hover:text-black"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/mostafa-mahdy-87784b212/" target="_blank" class="text-3xl hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/201115600907" target="_blank" class="text-3xl hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/mostafa00mahdy/?hl=ar" target="_blank" class="text-3xl hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/mostafa00mahdy" target="_blank" class="text-3xl hover:text-blue-400"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 section-title pb-2" data-key="skillsTitle"></h2>
+                    <div id="skills-container" class="space-y-4"></div>
+                </section>
+
+                <!-- Languages -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 section-title pb-2" data-key="languagesTitle"></h2>
+                    <div id="languages-container" class="space-y-3"></div>
+                </section>
+            </aside>
+
+            <!-- Right Column / Main Content -->
+            <div class="lg:col-span-2 space-y-8 main-content">
+                <!-- Work Experience -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6 section-title pb-2" data-key="workExperienceTitle"></h2>
+                    <div id="work-experience-container" class="relative timeline space-y-8"></div>
+                </section>
+
+                <!-- Education -->
+                 <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6 section-title pb-2" data-key="educationTitle"></h2>
+                    <div id="education-container" class="relative timeline space-y-8"></div>
+                </section>
+
+                <!-- Contributions -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6 section-title pb-2" data-key="contributionsTitle"></h2>
+                    <div id="contributions-container" class="relative timeline space-y-8"></div>
+                </section>
+
+                <!-- Publications -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6 section-title pb-2" data-key="publicationsTitle"></h2>
+                    <div id="publications-container" class="space-y-6"></div>
+                </section>
+
+                 <!-- Conferences -->
+                <section class="card rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-6 section-title pb-2" data-key="conferencesTitle"></h2>
+                    <ul id="conferences-container" class="list-disc space-y-2 ps-6"></ul>
+                </section>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const translations = {
+            ar: {
+                // Header
+                name: "مصطفى محمود محمد المهدي عويضة",
+                jobTitle: "محاضر وباحث في الدراسات الاقتصادية والاجتماعية",
+                downloadCV_AR: "تحميل السيرة الذاتية (عربي)",
+                downloadCV_EN: "تحميل السيرة الذاتية (إنجليزي)",
+                // Personal Info
+                personalInfoTitle: "البيانات الشخصية",
+                fullNameLabel: "الاسم:",
+                fullName: "مصطفى محمود محمد المهدي عويضة",
+                jobTitleLabel: "المسمى الوظيفي:",
+                dobLabel: "تاريخ الميلاد:",
+                dob: "7/9/1991",
+                pobLabel: "محل الميلاد:",
+                pob: "السعودية",
+                nationalityLabel: "الجنسية:",
+                nationality: "مصري",
+                maritalStatusLabel: "الحالة الاجتماعية:",
+                maritalStatus: "متزوج ويعول",
+                militaryServiceLabel: "الخدمة العسكرية:",
+                militaryService: "معفى نهائي",
+                // Contact Info
+                contactInfoTitle: "بيانات الاتصال",
+                phoneLabel: "المحمول:",
+                homePhoneLabel: "المنزل:",
+                emailLabel: "البريد الإلكتروني:",
+                addressLabel: "العنوان:",
+                address1: "قرية الروضة - مركز فاقوس- محافظة الشرقية - مصر (العنوان الأساسي)",
+                address2: "أرض السلام – مدينة الخارجة – محافظة الوادي الجديد - مصر",
+                // Social Media
+                socialMediaTitle: "وسائل التواصل",
+                // Work Experience
+                workExperienceTitle: "الخبرات العملية",
+                // Contributions
+                contributionsTitle: "الإسهامات والمشاركات",
+                // Education
+                educationTitle: "الشهادات والدرجات العلمية",
+                // Publications
+                publicationsTitle: "البحوث والنشرات العلمية",
+                // Conferences
+                conferencesTitle: "المؤتمرات والندوات",
+                // Skills
+                skillsTitle: "المهارات والدورات",
+                // Languages
+                languagesTitle: "اللغات",
+            },
+            en: {
+                // Header
+                name: "Mostafa Mahmoud Mohammed Al-Mahdi Oweida",
+                jobTitle: "Lecturer and Researcher in Economic and Social Studies",
+                downloadCV_AR: "Download CV (Arabic)",
+                downloadCV_EN: "Download CV (English)",
+                // Personal Info
+                personalInfoTitle: "Personal Information",
+                fullNameLabel: "Name:",
+                fullName: "Mostafa Mahmoud Mohammed Al-Mahdi Oweida",
+                jobTitleLabel: "Job Title:",
+                dobLabel: "Date of Birth:",
+                dob: "September 7, 1991",
+                pobLabel: "Place of Birth:",
+                pob: "Saudi Arabia",
+                nationalityLabel: "Nationality:",
+                nationality: "Egyptian",
+                maritalStatusLabel: "Marital Status:",
+                maritalStatus: "Married with dependents",
+                militaryServiceLabel: "Military Service:",
+                militaryService: "Finally Exempted",
+                // Contact Info
+                contactInfoTitle: "Contact Information",
+                phoneLabel: "Mobile:",
+                homePhoneLabel: "Home:",
+                emailLabel: "Email:",
+                addressLabel: "Address:",
+                address1: "El-Rawda Village - Faqus Center - Sharqia Governorate - Egypt (Main Address)",
+                address2: "Ard El-Salam - El-Kharga City - New Valley Governorate - Egypt",
+                // Social Media
+                socialMediaTitle: "Social Media",
+                // Work Experience
+                workExperienceTitle: "Work Experience",
+                // Contributions
+                contributionsTitle: "Contributions & Participations",
+                // Education
+                educationTitle: "Certificates & Degrees",
+                // Publications
+                publicationsTitle: "Research & Publications",
+                // Conferences
+                conferencesTitle: "Conferences & Seminars",
+                // Skills
+                skillsTitle: "Skills & Courses",
+                // Languages
+                languagesTitle: "Languages",
+            }
+        };
+
+        const data = {
+            workExperience: [
+                {
+                    ar: { place: "معهد التعاون الزراعي بعين شمس – شبرا الخيمة", role: "مدرس ومحاضر علم الاجتماع الريفي والتنمية الريفية", duration: "2025 - الآن" },
+                    en: { place: "Agricultural Cooperation Institute in Ain Shams - Shubra El-Kheima", role: "Teacher and Lecturer in Rural Sociology and Rural Development", duration: "2025 - Present" }
+                },
+                {
+                    ar: { place: "مستقل", role: "خبير إستراتيجي، محلل بيانات، إعداد دراسات الجدوى وتقييم المشاريع وأداء الشركات", duration: "2015 - الآن" },
+                    en: { place: "Freelancer", role: "Strategic Expert, Data Analyst, Feasibility Studies, Project & Company Performance Evaluation", duration: "2015 - Present" }
+                },
+                {
+                    ar: { place: "كلية الاقتصاد المنزلي - جامعة العريش", role: "مدرس مساعد عن طريق الندب المؤقت بقسم إدارة المؤسسات", duration: "2019 - 2020" },
+                    en: { place: "Faculty of Home Economics - Arish University", role: "Assistant Lecturer (Temporary Assignment) at the Institutions Management Department", duration: "2019 - 2020" }
+                },
+                {
+                    ar: { place: "شركة EIC", role: "مسؤول تسويق", duration: "2018 - 2019" },
+                    en: { place: "EIC Company", role: "Marketing Officer", duration: "2018 - 2019" }
+                },
+                {
+                    ar: { place: "شركة ميدي تريد للتجارة", role: "مسؤول إدارة موارد بشرية", duration: "2015 - 2018" },
+                    en: { place: "Medi Trade for Trading", role: "Human Resources Management Officer", duration: "2015 - 2018" }
+                }
+            ],
+            contributions: [
+                 {
+                    ar: { place: "مستقل", role: "مدرب في تحليل البيانات والأنظمة", duration: "2016 - الآن" },
+                    en: { place: "Freelancer", role: "Trainer in Data Analysis and Systems", duration: "2016 - Present" }
+                },
+                {
+                    ar: { place: "منظمة الأغذية والزراعة للأمم المتحدة في مصر وجامعة الوادي الجديد", role: "مدرب ومنظم دورة تدريبية: 'مقدمة في تطبيقات نظم المعلومات الجغرافية والاستشعار عن بعد'", duration: "11-15 يونيو 2022" },
+                    en: { place: "FAO Egypt & New Valley University", role: "Trainer and organizer for a training course: 'Introduction to GIS and Remote Sensing Applications'", duration: "June 11-15, 2022" }
+                },
+                {
+                    ar: { place: "لجنة المساعدات الأجنبية (وزارة التموين)", role: "تقييم مشروعات الأسر المنتجة الممولة من هيئة كير العالمية في المنيا", duration: "2019" },
+                    en: { place: "Foreign Aid Committee (Ministry of Supply)", role: "Evaluation of productive family projects funded by CARE International in Minya", duration: "2019" }
+                },
+                 {
+                    ar: { place: "لجنة المساعدات الأجنبية (وزارة التموين)", role: "تحديد الاحتياجات التنموية للمنظمات والمشروعات بمحافظة السويس", duration: "2019" },
+                    en: { place: "Foreign Aid Committee (Ministry of Supply)", role: "Identifying developmental needs for organizations and projects in Suez Governorate", duration: "2019" }
+                },
+                {
+                    ar: { place: "لجنة المساعدات الأجنبية (وزارة التموين)", role: "إعداد الخريطة الجغرافية لاحتياجات المحافظات من المنافذ والخدمات التسويقية المتنقلة", duration: "2019" },
+                    en: { place: "Foreign Aid Committee (Ministry of Supply)", role: "Preparing the geographical map of needs for mobile marketing outlets and services in Egyptian governorates", duration: "2019" }
+                }
+            ],
+            education: [
+                {
+                    ar: { degree: "دبلوم عالي في علوم البيانات (أكاديمي بحثي)", university: "كلية الدراسات العليا للإحصاء-جامعة القاهرة", duration: "2023 - الآن" },
+                    en: { degree: "Higher Diploma in Data Science (Academic Research)", university: "Faculty of Graduate Studies for Statistical Research - Cairo University", duration: "2023 - Present" }
+                },
+                {
+                    ar: { degree: "دكتوراه في العلوم الزراعية (اقتصاد زراعي وتحليل اقتصادي)", university: "كلية التكنولوجيا والتنمية - جامعة الزقازيق", duration: "2022 - الآن", details: "عنوان الرسالة: تحليل اقتصادي لإنتاج المحاصيل الاستراتيجية بمصر في ظل التغيرات المناخية" },
+                    en: { degree: "PhD in Agricultural Sciences (Agricultural Economics & Economic Analysis)", university: "Faculty of Technology and Development - Zagazig University", duration: "2022 - Present", details: "Thesis Title: Economic Analysis of Strategic Crop Production in Egypt under Climate Change" }
+                },
+                {
+                    ar: { degree: "دكتوراه في العلوم الزراعية (اجتماع ريفي 'تنمية ريفية')", university: "كلية الزراعة - جامعة الزقازيق", duration: "2016 - 2020", details: "عنوان الرسالة: التخطيط الاستراتيجي لتنمية إقليم قناة السويس باستخدام نظم المعلومات الجغرافية" },
+                    en: { degree: "PhD in Agricultural Sciences (Rural Sociology 'Rural Development')", university: "Faculty of Agriculture - Zagazig University", duration: "2016 - 2020", details: "Thesis Title: Strategic Planning for the Development of the Suez Canal Region Using Geographic Information Systems (GIS)" }
+                },
+                {
+                    ar: { degree: "ماجستير في العلوم الزراعية (اجتماع ريفي 'تنمية ريفية')", university: "كلية الزراعة - جامعة الزقازيق", duration: "2013 - 2016", details: "عنوان الرسالة: استخدام البنية المعلوماتية والتخريط الإلكتروني لدراسة احتياجات الموارد البشرية للتنمية المستدامة بالصحاري المصرية" },
+                    en: { degree: "M.Sc. in Agricultural Sciences (Rural Sociology 'Rural Development')", university: "Faculty of Agriculture - Zagazig University", duration: "2013 - 2016", details: "Thesis Title: Using Information Infrastructure and Electronic Mapping to Study Human Resource Needs for Sustainable Development in Egyptian Deserts" }
+                },
+                {
+                    ar: { degree: "دبلوم عالي في نظم المعلومات الجغرافية (GIS) (مهني)", university: "كلية الآداب - قسم الجغرافيا - جامعة عين شمس", duration: "2013 - 2015" },
+                    en: { degree: "Higher Diploma in Geographic Information Systems (GIS) (Professional)", university: "Faculty of Arts - Department of Geography - Ain Shams University", duration: "2013 - 2015" }
+                },
+                 {
+                    ar: { degree: "بكالوريوس في العلوم الزراعية (اقتصاد زراعي - اجتماع ريفي وإرشاد زراعي)", university: "كلية الزراعة - جامعة الزقازيق", duration: "2008 - 2012" },
+                    en: { degree: "B.Sc. in Agricultural Sciences (Agricultural Economics - Rural Sociology and Agricultural Extension)", university: "Faculty of Agriculture - Zagazig University", duration: "2008 - 2012" }
+                }
+            ],
+            publications: [
+                {
+                    ar: { authors: "الخشاب، حازم محمد أبو يحيى، والمهدي، مصطفى محمود محمد", year: "2023", title: "دراسة تحليلية لتأثير البطالة والظروف الاقتصادية على المشاركة الاجتماعية للمرأة الريفية بمحافظة الوادي الجديد", journal: "مجلة سيناء للعلوم التطبيقية", volume: "مجلد 12، عدد 2" },
+                    en: { authors: "El-Khashab, Hazem Mohamed Abu Yahya, and Al-Mahdi, Mostafa Mahmoud Mohamed", year: "2023", title: "An Analytical Study of the Impact of Unemployment and Economic Conditions on the Social Participation of Rural Women in the New Valley Governorate", journal: "Sinai Journal of Applied Sciences", volume: "Vol. 12, No. 2" }
+                },
+                {
+                    ar: { authors: "المهدي، مصطفى محمود محمد، وعكرش، أيمن أحمد", year: "2020", title: "تقييم البيئة الداخلية والخارجية للمشروعات التنموية ببعض المناطق الريفية والحضرية بإقليم قناة السويس", journal: "مجلة الزقازيق للاقتصاد الزراعي وعلم الاجتماع الريفي وبحوث الإرشاد الزراعي", volume: "مجلد 47، عدد 6" },
+                    en: { authors: "Al-Mahdi, Mostafa Mahmoud Mohamed, and Akrash, Ayman Ahmed", year: "2020", title: "Evaluation of the Internal and External Environment of Development Projects in Some Rural and Urban Areas of the Suez Canal Region", journal: "Zagazig Journal of Agricultural Economics and Rural Sociology and Agricultural Extension Research", volume: "Vol. 47, No. 6" }
+                },
+                {
+                    ar: { authors: "المهدي، مصطفى محمود محمد، وعكرش، أيمن أحمد", year: "2020", title: "تحليل الاستخدامات الاجتماعية للأرض في بعض المراكز الإدارية الريفية بمحافظة الإسماعيلية باستخدام نظم المعلومات الجغرافية", journal: "مجلة الزقازيق للاقتصاد الزراعي وعلم الاجتماع الريفي وبحوث الإرشاد الزراعي", volume: "مجلد 47، عدد 6" },
+                    en: { authors: "Al-Mahdi, Mostafa Mahmoud Mohamed, and Akrash, Ayman Ahmed", year: "2020", title: "Analysis of Social Land Uses in Some Rural Administrative Centers in Ismailia Governorate Using Geographic Information Systems", journal: "Zagazig Journal of Agricultural Economics and Rural Sociology and Agricultural Extension Research", volume: "Vol. 47, No. 6" }
+                }
+            ],
+            conferences: [
+                {
+                    ar: "حضور المؤتمر الدولي الأول للعلوم بعنوان نافذة على بحوث العلوم الزراعية للوصول الى الأمان الغذائي والتنمية المستدامة بجامعة الوادي الجديد.",
+                    en: "Attended the 1st International Conference on Science titled 'A Window on Agricultural Science Research to Achieve Food Security and Sustainable Development' at New Valley University."
+                },
+                {
+                    ar: "حضور ندوة علمية بعنوان: الاتجاهات الحديثة في بحوث ودراسات الاقتصاد الزراعي بالجامعة الإسلامية بمينيسوتا.",
+                    en: "Attended a scientific seminar titled: 'Modern Trends in Agricultural Economics Research and Studies' at the Islamic University of Minnesota."
+                },
+                {
+                    ar: "حضور المؤتمر الدولي الثاني للعلوم بعنوان التحول الرقمي والذكاء الاصطناعي في تحقيق الأمن الغذائي بجامعة الوادي الجديد.",
+                    en: "Attended the 2nd International Conference on Science titled 'Digital Transformation and Artificial Intelligence in Achieving Food Security' at New Valley University."
+                }
+            ],
+            skills: [
+                 {
+                    ar: { category: "الحاسب الآلي والبرمجيات", items: ["Microsoft Office (Word, Excel, PowerPoint, Access, Power BI)", "Oracle ERP HRMS", "Database (SQL Server R12, Access)"] },
+                    en: { category: "Computer & Software", items: ["Microsoft Office (Word, Excel, PowerPoint, Access, Power BI)", "Oracle ERP HRMS", "Database (SQL Server R12, Access)"] }
+                },
+                {
+                    ar: { category: "تحليل البيانات والإحصاء", items: ["SPSS", "G-power", "Matlab", "Amos", "SmartPLS", "Python", "Excel", "EViews"] },
+                    en: { category: "Data Analysis & Statistics", items: ["SPSS", "G-power", "Matlab", "Amos", "SmartPLS", "Python", "Excel", "EViews"] }
+                },
+                {
+                    ar: { category: "نظم المعلومات الجغرافية والتصميم", items: ["GIS (ArcGIS, AutoCAD, Erdas Imagine)", "Graphic Design (Photoshop, Illustrator, CorelDraw, InDesign, Canva)", "Web Design (HTML5, CSS3)"] },
+                    en: { category: "GIS & Design", items: ["GIS (ArcGIS, AutoCAD, Erdas Imagine)", "Graphic Design (Photoshop, Illustrator, CorelDraw, InDesign, Canva)", "Web Design (HTML5, CSS3)"] }
+                },
+                {
+                    ar: { category: "تطوير الويب", items: ["Python", "Java Programming", "Java EE Applications", "JPA", "Oracle ADF"] },
+                    en: { category: "Web Development", items: ["Python", "Java Programming", "Java EE Applications", "JPA", "Oracle ADF"] }
+                },
+                {
+                    ar: { category: "أدوات البحث والإنتاجية", items: ["SurveyMonkey, Microsoft Forms, Google Forms", "Citation (Mendeley, EndNote)", "Pilgrimage Check (Turnitin, QuillBot)"] },
+                    en: { category: "Research & Productivity Tools", items: ["SurveyMonkey, Microsoft Forms, Google Forms", "Citation (Mendeley, EndNote)", "Pilgrimage Check (Turnitin, QuillBot)"] }
+                },
+                {
+                    ar: { category: "أنظمة الذكاء الاصطناعي", items: ["ChatGPT", "Claude.ai", "Bard", "Gamma", "Taskade", "Scite.ai", "Hix.ai", "QuillBot"] },
+                    en: { category: "AI Systems", items: ["ChatGPT", "Claude.ai", "Bard", "Gamma", "Taskade", "Scite.ai", "Hix.ai", "QuillBot"] }
+                },
+                {
+                    ar: { category: "الموارد البشرية والإدارة", items: ["دبلوم الموارد البشرية", "إدارة الأداء", "التوظيف والاختيار", "التدريب والتطوير", "التعويضات والفوائد", "إعداد المديرين"] },
+                    en: { category: "Human Resources & Management", items: ["HR Diploma", "Performance Management", "Recruitment & Selection", "Training & Development", "Compensation & Benefits", "Manager Preparation"] }
+                },
+                {
+                    ar: { category: "المهارات الشخصية والقيادية", items: ["إدارة الأزمات", "إعداد القادة", "التخطيط الاستراتيجي", "تدريب المدربين (ToT)", "تطوير الذات ولغة الجسد", "الثقة بالنفس", "عمل خطة مشروع"] },
+                    en: { category: "Personal & Leadership Skills", items: ["Crisis Management", "Leader Preparation", "Strategic Planning", "Training of Trainers (ToT)", "Self-Development & Body Language", "Self-Confidence", "Project Planning"] }
+                },
+                {
+                    ar: { category: "المهارات العلمية والبحثية", items: ["البحث العلمي", "التفكير الناقد", "تحليل البيانات", "الإشراف العلمي", "إدارة الحوار والمؤتمرات", "نقد البحوث", "استخدام المناهج البحثية", "تحليل المواقف"] },
+                    en: { category: "Scientific & Research Skills", items: ["Scientific Research", "Critical Thinking", "Data Analysis", "Scientific Supervision", "Dialogue & Conference Management", "Research Critique", "Using Research Methodologies", "Situational Analysis"] }
+                }
+            ],
+            languages: [
+                {
+                    ar: { lang: "العربية", level: "اللغة الأم" },
+                    en: { lang: "Arabic", level: "Native Speaker" }
+                },
+                {
+                    ar: { lang: "الإنجليزية", level: "أعلى من المتوسط (TOEFL Local - 500)" },
+                    en: { lang: "English", level: "Upper-Intermediate (TOEFL Local - 500)" }
+                },
+                 {
+                    ar: { lang: "الألمانية", level: "جيد (A1, A2)" },
+                    en: { lang: "German", level: "Good (A1, A2)" }
+                }
+            ]
+        };
+        
+        const langArButton = document.getElementById('lang-ar');
+        const langEnButton = document.getElementById('lang-en');
+
+        const changeLanguage = (lang) => {
+            // Set document direction and lang
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update button styles
+            langArButton.classList.toggle('bg-blue-500', lang === 'ar');
+            langArButton.classList.toggle('text-white', lang === 'ar');
+            langEnButton.classList.toggle('bg-blue-500', lang === 'en');
+            langEnButton.classList.toggle('text-white', lang === 'en');
+
+            // Translate static text
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Populate dynamic content
+            populateTimeline('work-experience-container', data.workExperience, lang);
+            populateTimeline('contributions-container', data.contributions, lang);
+            populateTimeline('education-container', data.education, lang, true);
+            populateList('publications-container', data.publications, lang);
+            populateList('conferences-container', data.conferences, lang, true);
+            populateSkills('skills-container', data.skills, lang);
+            populateLanguages('languages-container', data.languages, lang);
+        };
+
+        const populateTimeline = (containerId, items, lang, isEducation = false) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            items.forEach(item => {
+                const content = item[lang];
+                const title = isEducation ? content.degree : content.role;
+                const subtitle = isEducation ? content.university : content.place;
+                const details = content.details ? `<p class="mt-2 text-sm italic" style="color: var(--text-color);">${content.details}</p>` : '';
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'relative timeline-item ps-8 pb-8';
+                itemDiv.innerHTML = `
+                    <h3 class="text-xl font-bold" style="color: var(--primary-color);">${title}</h3>
+                    <p class="font-semibold my-1">${subtitle}</p>
+                    <p class="text-sm font-semibold" style="color: var(--secondary-color);">${content.duration}</p>
+                    ${details}
+                `;
+                container.appendChild(itemDiv);
+            });
+        };
+
+        const populateList = (containerId, items, lang, isSimpleList = false) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            items.forEach(item => {
+                const listItem = document.createElement(isSimpleList ? 'li' : 'div');
+                if(isSimpleList) {
+                    listItem.textContent = item[lang];
+                } else {
+                    const content = item[lang];
+                    listItem.className = "p-4 border rounded-lg";
+                    listItem.innerHTML = `
+                        <h4 class="font-bold text-lg" style="color: var(--primary-color);">${content.title}</h4>
+                        <p class="text-sm my-1">${content.authors} (${content.year})</p>
+                        <p class="text-sm italic">${content.journal} - ${content.volume}</p>
+                    `;
+                }
+                container.appendChild(listItem);
+            });
+        };
+
+        const populateSkills = (containerId, skills, lang) => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            skills.forEach(skillCategory => {
+                const categoryContent = skillCategory[lang];
+                const categoryDiv = document.createElement('div');
+                let itemsHtml = categoryContent.items.map(item => `<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${item}</span>`).join('');
+
+                categoryDiv.innerHTML = `
+                    <h4 class="font-bold text-lg mb-2" style="color: var(--primary-color);">${categoryContent.category}</h4>
+                    <div>${itemsHtml}</div>
+                `;
+                container.appendChild(categoryDiv);
+            });
+        };
+        
+        const populateLanguages = (containerId, languages, lang) => {
+             const container = document.getElementById(containerId);
+             container.innerHTML = '';
+             languages.forEach(language => {
+                 const langContent = language[lang];
+                 const langDiv = document.createElement('div');
+                 langDiv.innerHTML = `<p><strong style="color: var(--primary-color);">${langContent.lang}:</strong> ${langContent.level}</p>`;
+                 container.appendChild(langDiv);
+             });
+        }
+
+        langArButton.addEventListener('click', () => changeLanguage('ar'));
+        langEnButton.addEventListener('click', () => changeLanguage('en'));
+
+        // Initial load
+        changeLanguage('ar');
+    </script>
+
+</body>
+</html>
+
+
+
